@@ -1,28 +1,55 @@
-import { useEffect, useState } from "react"
-
+//import { useCallback, useEffect, useState } from "react"
+import { useFetch } from "../hooks/useFetch"
+import { useState } from "react"
 
 export const ProductList = () => {
 
-    const [products, setProducts] = useState([])
 
-    console.log(products);
 
-    useEffect(() => {
-        fetch("http://localhost:8000/products")
-            .then(response => response.json())
-            .then(data => setProducts(data))
-    }, [])
+    const [url, setUrl] = useState('http://localhost:8000/products')
+
+    const { products } = useFetch(url) // we can also do {products : data} to name it something else
+
+    //const [count, setCount] = useState(0)
+
+    //console.log(products);
+
+    // const fetchProduct = useCallback(async () => {
+    //   const response = await fetch(url)
+    //  const data = await response.json()
+    //  setProducts(data)
+    // }, [url])
+
+    //useEffect(() => {
+    //fetch(url)
+    //.then(response => response.json())
+    // .then(data => setProducts(data))
+    // fetchProduct()
+
+    //}, [fetchProduct])
+
+    //useEffect(() => {
+    //console.log(count)
+    //}, [count])
 
 
     return (
         <section>
-            {products.map((product) => (
+            <div className="filter">
+                {/*<button onClick={() => setCount(count + 1)}>{count}</button>*/}
+
+                <button onClick={() => setUrl('http://localhost:8000/products')}>All</button>
+                <button onClick={() => setUrl('http://localhost:8000/products?in_stock=true')}>In Stock</button>
+
+            </div>
+            {/* because initially propduct is null*/}
+            {products && products.map((product) => (
                 <div className="card" key={product.id}>
                     <p className="id">{product.id}</p>
                     <p className="name">{product.name}</p>
-                    <p>
+                    <p className="info">
                         <span>{product.price}$</span>
-                        <span className={product.in_stock ? 'instock' : 'unavailable'}>{product.in_stock ? 'In Stock' : 'Unavailable'}</span>
+                        <span className={product.in_stock === 'true' ? 'instock' : 'unavailable'}>{product.in_stock === 'true' ? 'In Stock' : 'Unavailable'}</span>
                     </p>
                 </div>
 

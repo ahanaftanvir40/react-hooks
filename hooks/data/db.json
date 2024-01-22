@@ -4,25 +4,25 @@
             "id": 1001,
             "name": "Iphone",
             "price": 150,
-            "in_stock": true
+            "in_stock": "true"
         },
         {
             "id": 1002,
             "name": "Samsung Galaxy S24",
             "price": 100,
-            "in_stock": true
+            "in_stock": "true"
         },
         {
             "id": 1003,
             "name": "Realme C15",
             "price": 50,
-            "in_stock": false
+            "in_stock": "false"
         },
         {
             "id": 1004,
             "name": "Iphone 11",
             "price": 120,
-            "in_stock": true
+            "in_stock": "true"
         }
     ]
 }
