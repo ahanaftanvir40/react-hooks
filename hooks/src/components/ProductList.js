@@ -8,7 +8,7 @@ export const ProductList = () => {
 
     const [url, setUrl] = useState('http://localhost:8000/products')
 
-    const { products, loading } = useFetch(url) // we can also do {products : data} to name it something else
+    const { products, loading, error } = useFetch(url) // we can also do {products : data} to name it something else
 
     //const [count, setCount] = useState(0)
 
@@ -43,6 +43,7 @@ export const ProductList = () => {
 
             </div>
             {loading && <p>loading products......</p>}
+            {error && <p>{error}</p>}
             {/* because initially propduct is null so it is neither true or false so if it is true we map*/}
             {products && products.map((product) => (
                 <div className="card" key={product.id}>
