@@ -8,7 +8,7 @@ export const ProductList = () => {
 
     const [url, setUrl] = useState('http://localhost:8000/products')
 
-    const { products, loading, error } = useFetch(url) // we can also do {products : data} to name it something else
+    const { products, loading, error } = useFetch(url, { content: "ABC" }) // we can also do {products : data} to name it something else
 
     //const [count, setCount] = useState(0)
 
@@ -22,8 +22,8 @@ export const ProductList = () => {
 
     //useEffect(() => {
     //fetch(url)
-    //.then(response => response.json())
-    // .then(data => setProducts(data))
+    //.then(response => response.json()) //ignore while learning callback
+    // .then(data => setProducts(data)) //ignore while learning callback
     // fetchProduct()
 
     //}, [fetchProduct])
